@@ -1,0 +1,158 @@
+<html>
+
+<head>
+	<title>API Documentation - Roar Engine</title>
+
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
+	<script src="api.js"></script>
+</head>
+
+<body>
+
+
+<link rel="stylesheet" type="text/css" href="prettify.css">
+<script type="text/javascript" src="../current.js"></script>
+<script type="text/javascript" src="prettify.js"></script>
+
+<style>
+	body { color:#444; min-width:900px; font-family:"Trebuchet MS", Trebuchet, Helvetica, Tahoma, sans-serif; font-size:14px; margin:0; padding:0;}
+	a { color: #99cc66; }
+	h1 { color:#69839e; font-weight: normal; }
+	/*h2 { background:#e5effa; padding:8px 16px; color:#69839e; }*/
+
+	#sidebarx { position:fixed; left:0px; top:0px; height:100%; overflow-y:auto; float:left; color:#ddd; min-width:200px; width:25%; margin-right:32px; background:#383E44;  padding:0px; line-height:150%; }
+	#contentx { float:left; background:#fff; padding:20px; min-width:600px; width:65%; padding-left:28%; }
+	#contentx h1 { margin-top:0px }
+	#contentx h2 { margin-bottom:10px;}
+	#contentx h3 { font-size:12pt; font-weight:normal;margin-bottom:0px; margin-top:10px;}
+	#contentx p { margin-bottom:20px;}
+
+	#sidebarx h3 { cursor:pointer; font-weight:bold; color:#fff; background:#69839e; margin-bottom:8px; padding:10px 20px; }
+	#sidebarx h3 a { color:inherit; }
+	#sidebarx select { margin-left:20px; margin-bottom:10px;}
+
+	.api-sideblock { padding-left:20px; margin-bottom:40px; }
+	.api-controller-block { cursor:pointer; margin-bottom:10px; }
+	.api-controller-block ul { display:none; }
+	.api-controller-block strong { border-bottom:1px solid #555; display:block; margin-right:20px;}
+	.api-controller-block strong:hover, .api-controller-block li:hover, #api-serverindex div:hover { background:rgba(255,255,255,0.1);}
+	#api-callindex li { margin-left:10px !important; }
+	.server-maintext { margin-bottom:10px;}
+
+	.example { margin-bottom:10px; overflow:auto; }
+
+	.console { display:none; position:fixed; width:75%; border-bottom:4px solid #999; box-shadow:0px 6px 0px rgba(0,0,0,0.2); z-index:1000; right:0px;}
+	iframe { width:100%; height:400px; border:0; }
+	.inner {
+		/*display:none;*/
+		background: #ccc;
+		overflow: hidden;
+		height: 24px;
+		position: relative;
+	}
+	.closer {
+		position: absolute;
+		right: 0px;
+		top: 0px;
+		height: 24px;
+		width: 35px;
+		text-align: center;
+		line-height: 24px;
+		border-left: 1px solid #bbb;
+		cursor:pointer;
+	}
+	.inner .closer:hover {
+	background-color:#d5d5d5;
+	}
+	.inner .closer:active {
+		background-color:#bbb;
+	}
+
+	.openconsole { color:#999; background:#333; font-size:12px; text-align:right; cursor:pointer; padding:8px 20px; }
+	.openconsole:hover { background:rgba(255,255,255,0.2); color:#fff;}
+	.openconsole:active { background:#69839e; }
+
+</style>
+
+<div class="console">
+	<div class="inner">
+		<div class="closer" onclick="$('.console').slideUp(100)">&times;</div>
+	</div>
+	<iframe src="../codeconsole/index.html"></iframe>
+</div>
+
+<div id="apiblock">
+
+	<div id="sidebarx">
+
+		<div class="openconsole" onclick="$('.console').slideToggle(100)">Toggle API console</div>
+
+		<h3 onclick="$(this).next().slideToggle()">Server responses</h3>
+		<div style="display:none" class="api-sideblock" id="api-serverindex"></div>
+
+		<h3 onclick="$(this).next().slideToggle()">API reference</h3>
+		<div class="api-sideblock" id="api-callindex"></div>
+
+	</div>
+	<a name="overview"></a>
+	<div id="contentx">
+		<div id="docs-overview">
+		<h1>Roar Engine: <strong>Web API reference</strong></h1>
+
+
+		<p>Roar is a configurable <b>game mechanics</b> platform.</p>
+
+		<h3>Web API</h3>
+		<p>Each game has its own distinct API URL, usually something like <strong>http://{your.gamehost.com}/{yourgame}/</strong>.</p>
+
+		<p>All Roar API calls are formatted using the same pattern: <strong>/controller/action/</strong> (ensuring a trailing slash).
+			If your game key was 'rockstar', you'd access the <em>/info/ping</em> API call as follows:<br><br>
+			Example: <strong>http://{your.gamehost.com}/rockstar/info/ping/</strong></p>
+
+		<p>All calls to Roar Engine are done using HTTP POST. This is not strictly RESTful, but it is very
+			cross-device and cross-platform friendly. Most calls require the sending of an
+			<strong>auth_token</strong> (authentication token) as a parameter, which can be obtained by logging a user in using
+			<em>user/login</em> or <em>facebook/login_oauth</em>. Content type (mandatory) and character set (optional) should be set in the http header as follows:
+				<li>Content-type: application/x-www-form-urlencoded
+				<li>Charset: UTF-8</p>
+
+		<h3>Server Responses</h3>
+		<p>
+		All Roar API responses are structured using the same pattern for any given <strong>/controller/action/</strong> API call:<br>
+
+<pre class="prettyprint lang-xml">&lt;roar tick="{servertime}"&gt;
+  &lt;controller&gt;
+    &lt;action status="ok|error"&gt;
+      &lt;!-- Action responses returned here --&gt;
+    &lt;/action&gt;
+  &lt;/controller&gt;
+  &lt;!-- Server updates here --&gt;
+  &lt;server&gt;
+    &lt;level_up value="5"/&gt;
+  &lt;/server&gt;
+&lt;/roar&gt;
+</pre>
+		</p>
+
+		<p>
+		You may notice that along with the response to the API call that you have made, on occasion Roar will supply an additional &lt;server&gt; chunk of data. This data represents updates that have occurred within Roar that are relevant to the user (and often tied to recent API calls).<br><br>
+
+		See <b>Server responses</b> in this document for reference.
+		</p>
+
+		</div>
+
+		<br><br>
+
+		<div id="docs-block">
+		<h1><b>API Reference</b></h1>
+		</div>
+	</div>
+
+</div>
+
+
+</body>
+
+
+</html>

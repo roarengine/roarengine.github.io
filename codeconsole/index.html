@@ -1,0 +1,158 @@
+<html>
+
+<head>
+	<title>API console</title>
+
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
+</head>
+
+<body>
+
+
+<link rel="stylesheet" type="text/css" href="../css/normalize.css">
+<link rel="stylesheet" type="text/css" href="css/prettify.css">
+<script type="text/javascript" src="../current.js"></script>
+<script type="text/javascript" src="js/prettify.js"></script>
+<script type="text/javascript" src="js/console.js"></script>
+
+<style>
+/* --- Code Console --- */
+
+body { margin:0; padding:0; overflow:hidden; }
+h1,h2,h3,h4,h5 { margin:0; }
+
+.panel-main { float:left; width:75%; height:100%; background:#fff;overflow-x:hidden; overflow-y:auto; }
+.panel-nav { float:left; width:25%; background:#e9ebed; height:100%; overflow-y:auto; }
+
+#codeblock { font-size:12px !important; }
+#cc-authbox { padding-left:10px; margin-top:20px; font-size:8pt; font-weight:normal; }
+#cc-authbox h5 { font-weight: normal; font-size:8pt; color:#666; }
+#cc-authtoken { border:1px dotted #666; background:#999; }
+
+#cc-urlbox { overflow:hidden; padding:10px; margin-top:10px; margin-bottom:10px; }
+.cc-url { float:left; overflow:hidden; margin-right:10px; }
+.cc-url h5 { font-weight:normal; margin:0px; font-size:8pt; color:#666; }
+.cc-pulldown { width:95px; }
+#cc-apidoclink { clear:both; cursor:pointer; padding:5px; padding-left:0px; font-size:8pt; color:#777;  text-decoration:underline;margin-top:5px; }
+
+#cc-leftinputs { padding-left: 10px; font-size:8pt; color:#666; }
+#cc-leftinputs h5 { font-size:9pt; color:#999; }
+#cc-leftinputs input[type='text'] { margin-top:5px;}
+
+#cc-submit { border:1px solid #47a; background:#69c; cursor:pointer; padding:10px; color:#fff; font-size:11pt; }
+#cc-submit:hover { background:#7ad; }
+#cc-submit:active { background:#58b; }
+
+#cc-loc { color:#fff; background:#778491; padding:10px; font-size:9pt; }
+.cc-urltext { color:#383e44; font-size: 7pt; }
+#codeblock { font-size:10pt; padding:10px; margin:0; background:#f5f5f5; }
+
+#refbox { position:relative; border-bottom:1px solid #999; width:100%; min-height:100px; background:#f5f5f5; padding-bottom:10px; margin-bottom:0px; }
+#refbox .titlebar { background:#bbb; font-size:9pt; padding-left:10px; color:#fff; height:30px; line-height:30px; }
+#refcloser { background:#bbb; cursor:pointer; color:#888; height:30px; line-height:30px; padding-left:16px; padding-right:16px; position:absolute; top:0px; right:0px; font-weight:normal; font-size:14px; }
+#refcloser:hover { background:#aaa; }
+
+#cc-docbox { font-size:9pt; color:#333; margin:10px; margin-left:15px;}
+.example { margin:15px; margin-top:3px; margin-bottom:5px; background:#e5e5e5; border:1px solid #999; border-right-width:3px; border-bottom-width:3px;  }
+.example pre { font-size:12px;}
+.example h5 { background:#999; margin:0; padding:5px; color:#fff; font-weight:normal; font-size:11pt;}
+.example_body { margin-left:15px; margin-right:15px; margin-top:4px; margin-bottom:2px; padding:2px; }
+
+ul.cc-scriptlog {
+	list-style: none;
+	margin-left: 2px;
+}
+
+ul.cc-scriptlog li {
+	size: 8pt;
+	font-family: fixed;
+	background-color: #e9ebed;
+	margin-bottom: 2px;
+	padding: 4px;
+}
+
+.onstart {
+	font-size:30px;
+	margin: 150px 30px;
+	color:#ddd;
+}
+
+.cc-config {
+	font-size:12px;
+	padding:8px;
+	background:rgba(0,0,0,0.2);
+	color:#333;
+}
+
+input[type="text"] {
+	border:1px solid #ccc;
+	padding:4px 8px;
+}
+input[type="text"]:focus {
+	outline:0;
+	background:#cde;
+	border:1px solid #69c;
+}
+
+</style>
+
+
+
+
+<div id="area-console" class="areas">
+	<div class="panel-nav">
+		<div class="cc-config">
+			<h5>API URL:</h5>
+			<input type="text">
+		</div>
+		<div id="cc-authbox">
+			<h5>User Auth Token</h5>
+			<input id="cc-authtoken" type="text" />
+		</div>
+		<div id="cc-urlbox">
+			<div class="cc-url">
+				<h5>Class</h5>
+				<select id="cc-controller" class="cc-pulldown">
+				</select>
+			</div>
+
+			<div class="cc-url">
+				<h5>Action</h5>
+				<select id="cc-action" class="cc-pulldown">
+				</select>
+			</div>
+
+			<div id="cc-apidoclink" onclick="$('#refbox').slideDown('fast');">Show docs: <strong>/<span class="cntrlr">game</span>/<span class="actn">login</span>/</strong> &raquo;</div>
+		</div>
+
+		<div id="cc-leftinputs">
+			<div class="cc-paramsbox"></div>
+			<input type="submit" id="cc-submit" value="Submit" onclick="$('.onstart').hide();"><br/>
+		</div>
+	</div>
+
+	<div class="panel-main console-main">
+
+		<div class="onstart">Select API call and submit</div>
+
+			<div id="serverchunks" style="display:none;">
+				<div id="sccloser" onclick="$('#serverchunks').slideUp('fast');">&times;</div>
+			</div>
+			<div id="refbox" style="display:none">
+				<div id="refcloser" onclick="$('#refbox').slideUp('fast');">x</div>
+				<div class="titlebar">API Reference: <strong><span class="cntrlr">game</span>/<span class="actn">login</span>/</strong></div>
+				<div id="cc-docbox"></div>
+				<div id="cc-examples"></div>
+			</div>
+			<div id="cc-loc" style="display:none"><span class="cc-urltext">Server response for:</span> <span id="cc-urltag"></span>/<strong><span class="context"></span>/<span class="acttext"></span></strong>/</div>
+			<pre class="prettyprint lang-xml" style="display:none" id="codeblock">
+				Waiting for server response...
+			</pre>
+	</div>
+</div>
+
+
+</body>
+
+
+</html>

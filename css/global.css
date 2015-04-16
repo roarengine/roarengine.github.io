@@ -1,0 +1,427 @@
+body {
+	background:url('../img/bg.jpg') #cde;
+	font-family: 'Lato', sans-serif;
+	font-weight:400;
+	color:#262626;
+}
+
+a, .link { color:#89d43f; text-decoration: underline; cursor:pointer; }
+a.alt { color:#93b4c4; }
+
+.splash {
+	position:relative;
+	background:url('../img/grad.jpg') top center no-repeat;
+	margin:0 auto;
+	width:900px;
+	padding-top:100px;
+}
+
+
+.splashbox {
+	position:relative;
+	width:640px;
+	margin:0 auto;
+	margin-bottom:00px;
+	padding:30px 0px 60px 120px;
+	height:200px;
+	/*background:rgba(255,255,255,0.1);*/
+}
+
+.captitle {
+	font-weight: 400;
+	font-size:18px;
+	color:#a7c7d6;
+	text-shadow: 1px 1px 5px #333;
+	padding-left:75px;
+}
+
+.maintitle {
+	font-weight: 300;
+	font-size:48px;
+	color:#fff;
+	text-shadow: 1px 1px 5px #333;
+	margin-top:-5px;
+}
+
+.maintitle b {
+	color:#89d43f;
+	font-weight: 700;
+}
+
+
+.bite {
+	height:167px; width:118px;
+	position:absolute;
+	left:0px; top:0px;
+	background:url('../img/bite.png') no-repeat;
+}
+
+.swatch {
+	float:right;
+	margin-top:10px;
+	padding-bottom:20px;
+	clear:both;
+	width:175px; height:9px;
+	background:url('../img/swatch.png') no-repeat;
+}
+
+.signupbox {
+
+	margin-top:20px;
+	clear:both;
+}
+
+.nextstep {
+	margin-top:50px;
+}
+.nextstep a { color:#93b4c4; padding-left:20px; }
+.nextstep .book { background:url('../img/ico-book.png') no-repeat; }
+
+.box {
+	clear:both;
+	overflow:hidden;
+}
+
+.rebox {
+	float:right;
+	margin-left:30px;
+}
+
+
+
+
+/* ----- Downloads ----- */
+
+.downloadbar {
+	width:100%;
+	font-weight:400;
+	background:#262626;
+	padding:10px 0px;
+	color:#89d43f;
+	font-size:16px;
+
+  -webkit-box-shadow: 0px -5px 20px 0px #323d4a;
+          box-shadow: 0px -5px 20px 0px #323d4a;
+
+}
+
+.downloads {
+	width:750px !important;
+	text-align:right;
+}
+.downloads a { text-decoration:none;}
+.downloads-box { cursor:pointer; background:#333 url('../img/logo-unity.png') 3px 2px no-repeat; padding:4px 4px 4px 32px;}
+.downloads em { color:#fff; font-style:normal;}
+.downloads .ico-ar-s { width:10px; height:11px; margin-left:2px; vertical-align:middle; display:inline-block; background:url('../img/ar-s.png') no-repeat;}
+
+.demolink { margin-left:5px; font-size:12px; font-weight:bold; color:#93B4C4; }
+
+
+
+
+
+/* ----- Features ----- */
+
+.featurebar {
+	width:100%;
+	min-height:200px;
+	background:#36424d;
+	padding:30px 0px;
+	-webkit-box-shadow: 0px 5px 20px 0px #323d4a;
+          box-shadow: 0px 5px 20px 0px #323d4a;
+}
+
+.feature-header {
+	color:#fff;
+	text-shadow: 1px 1px 5px #111;
+	font-size:24px;
+	font-weight:300;
+	text-align:center;
+	padding-bottom:20px;
+}
+.feature-header b { font-weight:700; text-shadow: 0px 0px 0px #111;}
+.feature-sub {
+	display:none;
+	color:#69839e;
+	font-size:18px;
+	font-weight:400;
+	padding-top:10px;
+	text-align:center;
+}
+
+.theatre { margin-top:20px; overflow:hidden; line-height:145%; }
+.featurebox {
+	float:left;
+
+	padding-left:35px;
+	width:225px;
+	margin:10px 20px;
+	color:#c6e4fe;/*#93b4c4;*/
+	font-weight:400;
+	font-size:18px;
+	height:85px;
+}
+.f-normal {
+	font-size:12px;
+	color:#638494;
+	font-weight:400;
+	line-height:145%;
+}
+.feature-dl {
+	/*font-weight:300;*/
+	color:#69839e;
+	width:750px;
+	text-align:right;
+	margin:0 auto;
+	margin-top:30px; margin-bottom:10px;
+}
+
+.friends { background:url('../img/ico-group.png') 0px 3px no-repeat; }
+.badges { background:url('../img/ico-badge.png') 0px 0px no-repeat; }
+.qb { background:url('../img/ico-qb.png') 0px 2px no-repeat; }
+.payment { background:url('../img/ico-payment.png') 0px 0px no-repeat; }
+.script { background:url('../img/ico-script.png') 0px 0px no-repeat; }
+.items { background:url('../img/ico-items.png') 3px 3px no-repeat; }
+
+
+
+
+
+/* ----- footer ----- */
+
+.footer .inner {
+	position:relative;
+	text-align:center;
+	padding-bottom:30px;
+}
+.logo {
+	background:url('../img/logo.png') no-repeat;
+	height:81px; width:141px;
+	margin:40px auto;
+}
+.lowlinks {
+	margin-top:20px;
+	font-size:12px;
+	font-weight:400;
+}
+.lowlinks a {
+	color:#262626;
+}
+.monster {
+	position:absolute;
+	bottom:0px; left:10px;
+	background: url('../img/monster.png') no-repeat;
+	height:107px; width:175px;
+}
+
+
+
+
+/* ----- Buttons ----- */
+
+.btn {
+	cursor:pointer;
+	background:#93b4c4;
+	display:inline-block;
+	padding:8px 16px;
+	text-shadow: 1px 1px 1px #333;
+	color:#fff;
+	border:1px solid #537484;
+	text-align:center;
+	text-decoration:none;
+}
+
+.btn-normal {
+	font-size:28px;
+	font-weight:700;
+}
+.btn-caption {
+	font-weight:400;
+	font-size:11px;
+	color:#405060;
+	text-shadow:0px 0px 0px;
+}
+
+.btn-shadow {
+  -webkit-box-shadow: 0px 5px 0px 0px #405060;
+          box-shadow: 0px 5px 0px 0px #405060;
+}
+.btn-shadow:active {
+	margin-top: 5px;
+	box-shadow:0 0 0;
+}
+
+
+
+
+/* ---- General styles -----*/
+.inner {
+	margin:0 auto;
+	width:900px;
+}
+
+.corner {
+  -webkit-border-radius: 12px;
+          border-radius: 12px;
+  -moz-background-clip: padding; -webkit-background-clip: padding-box; background-clip: padding-box;
+
+}
+
+
+.consolebar {
+	/*-webkit-box-shadow: 0px -5px 20px 0px #323d4a;
+	box-shadow: 0px -5px 20px 0px #323d4a*/
+	/*background:#262626;*/
+	height:435px;
+	position:absolute;
+	width:100%; top:20%;
+}
+.innerconsole {
+	width:920px;
+	height:100%;
+	margin:0 auto;
+	overflow:hidden;
+	border:6px solid #999;
+	box-shadow: 5px 5px 0px rgba(0,0,0,0.2);
+}
+.innerconsole iframe { width:100%; height:400px; border:0; overflow:hidden; }
+
+.innerheader {
+	background: #ccc;
+	overflow: hidden;
+	height: 35px;
+	position: relative;
+}
+.innerheader .browseapi a {
+	line-height: 35px;
+	font-size: 12px;
+	float: right;
+	margin-right: 50px;
+	text-decoration: underline;
+	color: #69c;
+}
+.innerheader .closer {
+	position: absolute;
+	right: 0px;
+	top: 0px;
+	height: 35px;
+	width: 35px;
+	text-align: center;
+	line-height: 35px;
+	border-left: 1px solid #bbb;
+	cursor:pointer;
+}
+.innerheader .closer:hover {
+	background-color:#d5d5d5;
+}
+.innerheader .closer:active {
+	background-color:#bbb;
+}
+
+
+/* ---- Payments block */
+.pricingbox {
+	background:#f5f5f5;
+	border-bottom: 6px solid #ccc;
+	border-top: 6px solid #ccc;
+	width: 100%;
+}
+.pricingbox .inner {
+	width:800px;
+	margin:0 auto;
+	overflow:hidden;
+	position:relative;
+}
+.pricingbox iframe {
+	border: 0;
+	width:100%;
+	height:290px;
+}
+.pricingbox .note {
+	color:#999;
+	font-size:12px;
+	margin-bottom:16px;
+}
+.blo {
+	float:left;
+	width:520px;
+	margin:8px 20px 32px 0px;
+}
+.buybox {
+	margin-top:16px;
+	float:left;
+	width:260px;
+}
+
+/* ---- License block */
+.licensebox {
+	position: fixed;
+	top: 0px;
+	right: 0px;
+	width: 0px;
+	background: #fff;
+	bottom: 0px;
+	z-index: 10;
+	box-shadow: -6px 0px 0px rgba(0,0,0,0.2);
+}
+.licensebox .inner {
+	width:720px;
+	margin:0 auto;
+	height:100%;
+}
+.licensebox .spot {
+	position: relative;
+	float:right;
+	top: 20px;
+	right: 12px;
+	padding: 8px 16px;
+	background: #eee;
+	cursor: pointer;
+	color:#999;
+}
+.licensebox .spot:hover {
+	background:#f5f5f5;
+}
+.licensebox iframe {
+	width: 740px;
+	border: 0px;
+	height: 100%;
+}
+
+/* ---- Docs block */
+.docsbox {
+	width:840px;
+	margin:40px auto 20px;
+	overflow:hidden;
+}
+
+.gobo {
+	float: left;
+	background:#ddd;
+	padding:30px 10px;
+	text-align: center;
+	border-radius: 8px;
+	width:230px;
+	margin:0px 15px;
+	font-size:14px;
+	color:#666;
+}
+.gobo:hover {
+	background:#eee;
+}
+.gobo b {
+	color:#444;
+	font-size:20px;
+	display:block;
+	text-decoration:underline;
+	margin-bottom:8px;
+}
+.gobo.hilite {
+	background-color:#89d43f;
+	color:#fff;
+}
+.gobo.hilite:hover { background:#99e44f;}
+.gobo.hilite b {
+	color:#fff;
+}
+
